@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BJHand;
 
 namespace CardClasses
 {
@@ -41,6 +42,22 @@ namespace CardClasses
             Console.WriteLine("\nTesting IndexOf with Value & Suit");
             Console.WriteLine("Index of a 2 of Clubs: " + h.IndexOf(2, 1));
             Console.WriteLine("We are now done testing the Hand class");
+            Console.WriteLine("Testing the BJHand class");
+            BJHand bh = new BJHand();
+            Deck d = new Deck();
+            d.Shuffle();
+            BJHand dealer = new BJHand(d, 2);
+
+            Console.WriteLine("What's on hand: \n" + dealer.ToString());
+
+            Console.WriteLine("\nTesting HasAce");
+            Console.WriteLine("Hand has an Ace: " + bh.HasAce);
+
+            Console.WriteLine("\nTesting IsBusted");
+            Console.WriteLine("Are we busted? " + bh.IsBusted);
+
+            Console.WriteLine("\nTesting Score");
+            Console.WriteLine("Score of hand: " + bh.Score);
         }
     }
 }
