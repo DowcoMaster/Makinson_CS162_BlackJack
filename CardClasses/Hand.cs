@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,7 +66,16 @@ namespace CardClasses
         }
         public int IndexOf(Card c)
         {
-            return cards.IndexOf(c);
+            int v = c.Value;
+            int s = c.Suit;
+            for (int i = 0; i < cards.Count; i++)
+            {
+                if (cards[i].Value == v && cards[i].Suit == s)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
         public int IndexOf(int v)
         {
@@ -91,7 +101,12 @@ namespace CardClasses
         }
         public override string ToString()
         {
-            return base.ToString();
+            string output = "";
+            // go through every card in the deck
+            foreach (Card c in cards)
+                // ask the card to convert itself to a string
+                output += (c.ToString() + "\n");
+            return output;
         }
     }
 }
